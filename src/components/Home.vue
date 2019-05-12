@@ -6,7 +6,7 @@
       <Notice></Notice>
       <About></About>
     </div>
-    <Foot></Foot>
+    <Foot :translate="425"></Foot>
   </div>
 </template>
 

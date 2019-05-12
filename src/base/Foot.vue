@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer" :style="{'transform':'translate(0, -'+translate+'px)'} ">
     <div class="absolute full-width">
       <div class="max-1000 min-1000 margin-auto">
         <img class="full-width" src="../../static/img/ft_comper.png" alt="图片显示错误">
@@ -27,14 +27,17 @@
 
 <script>
   export default {
-    name: "Foot"
+    name: "Foot",
+    props: {
+      translate: {
+        default: 0
+      }
+    }
   }
 </script>
 
 <style lang="less">
   .footer {
-    transform: translate(0, -425px);
-
     > div {
       height: 600px;
       background: url("../../static/img/bg_body_footer.png") no-repeat center center/cover;
