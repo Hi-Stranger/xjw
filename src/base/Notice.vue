@@ -21,6 +21,7 @@
     height: 39px;
     background-color: #060912;
     border: solid 1px #333843;
+    margin-bottom: 15px;
 
     > p {
       color: #d9d609;
