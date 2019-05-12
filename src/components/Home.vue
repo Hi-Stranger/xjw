@@ -1,8 +1,9 @@
 <template>
   <div class="xjw-home">
     <Head></Head>
-    <div class="banner-box relative">
-
+    <Banner></Banner>
+    <div class="content max-1000 margin-auto">
+      <Notice></Notice>
     </div>
   </div>
 </template>

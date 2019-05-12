@@ -87,6 +87,7 @@
 
     .content {
       height: 119px;
+
       .logo {
         background: url("../../static/img/l_guang.png") no-repeat top center/contain;
 
@@ -167,6 +168,10 @@
 
         .join-box {
           width: 137px;
+
+          img:active {
+            opacity: .8;
+          }
         }
       }
 
@@ -209,16 +214,19 @@
         cursor: pointer;
         font-size: 15px;
         height: 100%;
-        img{
+
+        img {
           right: 20px;
           top: 2px;
           width: 20px;
         }
       }
-      .other-color{
+
+      .other-color {
         color: #ffff00;
       }
-      p:hover{
+
+      p:hover {
         background: url("../../static/img/nav_hover_bg.jpg") repeat-x 100% 100%/contain;
         color: #314787;
       }
