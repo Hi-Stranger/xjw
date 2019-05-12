@@ -1,10 +1,10 @@
 <template>
   <div class="footer">
     <div class="absolute full-width">
-      <div class="max-1000 margin-auto">
+      <div class="max-1000 min-1000 margin-auto">
         <img class="full-width" src="../../static/img/ft_comper.png" alt="图片显示错误">
       </div>
-      <div class="max-1000 margin-auto absolute">
+      <div class="max-1000 min-1000 margin-auto absolute">
         <img src="../../static/img/footer_img.png" alt="图片显示错误">
         <div class="flex col font12">
           <div class="flex just-center mar-t15">
