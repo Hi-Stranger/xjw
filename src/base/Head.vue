@@ -24,9 +24,9 @@
             <p class="sign-btn font12 text-center pointer">登入</p>
             <p class="font12 text-center colorWhite pointer hover">忘记密码</p>
           </div>
-          <div class="join-box">
+          <router-link to="/register" tag="div" class="join-box">
             <img class="pointer full-width" src="../../static/img/jion_us.png" alt="图片显示错误">
-          </div>
+          </router-link>
         </div>
         <div v-else class="user-info flex col just-between">
           <div class="flex just-end">

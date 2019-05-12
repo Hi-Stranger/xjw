@@ -1,5 +1,5 @@
 <template>
-  <div class="xjw-home">
+  <div class="xjw-home main-box">
     <Head></Head>
     <Banner></Banner>
     <div class="content relative min-1000 max-1000 margin-auto">
@@ -19,14 +19,4 @@
   }
 </script>
 
-<style lang="less">
-  .xjw-home {
-    background: rgba(6, 9, 18, 1);
-
-    > .content {
-      /*top: -125px;*/
-      transform: translate(0, -125px);
-      z-index: 1;
-    }
-  }
-</style>
+<style lang="less"></style>
