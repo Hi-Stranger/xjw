@@ -1,5 +1,5 @@
 <template>
-  <div class="notice-box flex full-width">
+  <div class="notice-box flex full-width border-box">
     <p class="font18">公告：</p>
     <div class="flex1">
       <van-notice-bar

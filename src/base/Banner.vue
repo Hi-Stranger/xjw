@@ -1,5 +1,5 @@
 <template>
-  <div class="banner relative"></div>
+  <div class="banner relative min-1000"></div>
 </template>
 
 <script>

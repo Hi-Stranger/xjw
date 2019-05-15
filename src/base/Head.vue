@@ -21,11 +21,11 @@
             <input class="font12" type="password" placeholder="请输入密码">
           </div>
           <div class="sign-group flex col just-between">
-            <p class="sign-btn font12 text-center pointer">登入</p>
+            <p class="sign-btn font12 text-center pointer opacity8">登入</p>
             <p class="font12 text-center colorWhite pointer hover">忘记密码</p>
           </div>
           <router-link to="/register" tag="div" class="join-box">
-            <img class="pointer full-width" src="../../static/img/jion_us.png" alt="图片显示错误">
+            <img class="pointer full-width opacity8" src="../../static/img/jion_us.png" alt="图片显示错误">
           </router-link>
         </div>
         <div v-else class="user-info flex col just-between">
@@ -46,12 +46,12 @@
     </div>
     <div class="to-page">
       <div class="flex margin-auto max-1000 text-center colorWhite">
-        <p>首页</p>
+        <router-link to="/" tag="p">首页</router-link>
         <p>体育投注</p>
-        <p class="relative">
+        <router-link to="/entertainment" tag="p" class="relative">
           真人娱乐
           <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
-        </p>
+        </router-link>
         <p>电子游艺</p>
         <p>时时彩</p>
         <p class="other-color">六合投注</p>
@@ -159,19 +159,11 @@
           .sign-btn {
             color: #fefefe;
             /*<!--background: url("../../static/img/dengru_btn.png") no-repeat 100% 100%/contain;-->*/
-
-            &:active {
-              opacity: .8;
-            }
           }
         }
 
         .join-box {
           width: 137px;
-
-          img:active {
-            opacity: .8;
-          }
         }
       }
 

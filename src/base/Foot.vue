@@ -1,5 +1,5 @@
 <template>
-  <div class="footer" :style="{'transform':'translate(0, -'+translate+'px)'} ">
+  <div class="footer min-1000" :style="{'transform':'translate(0, -'+translate+'px)'} ">
     <div class="absolute full-width">
       <div class="max-1000 min-1000 margin-auto">
         <img class="full-width" src="../../static/img/ft_comper.png" alt="图片显示错误">
