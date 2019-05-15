@@ -60,10 +60,10 @@
           棋牌游戏
           <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
         </p>
-        <p class="relative other-color">
+        <router-link to="/preferential" tag="p" class="relative other-color">
           优惠活动
           <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
-        </p>
+        </router-link>
         <p>在线客服</p>
       </div>
     </div>

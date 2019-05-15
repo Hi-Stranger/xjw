@@ -1,7 +1,7 @@
 <template>
   <div class="xjw-entertainment main-box">
     <Head></Head>
-    <Banner1></Banner1>
+    <Banner2></Banner2>
     <div class="content relative min-1000 max-1000 margin-auto">
       <Notice></Notice>
       <div class="entertainment-box min-1000 max-1000 border-box flex col">

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '@/components/Home'; //首页
 import Register from '@/components/Register'; //注册
 import Entertainment from '@/components/Entertainment'; //真人娱乐
+import Preferential from '@/components/Preferential'; //优惠活动
 Vue.use(Router);
 
 export default new Router({
@@ -15,11 +16,14 @@ export default new Router({
       path: '/register',
       name: 'Register',
       component: Register,
-    }
-    , {
+    }, {
       path: '/entertainment',
       name: 'Entertainment',
       component: Entertainment,
+    }, {
+      path: '/preferential',
+      name: 'Preferential',
+      component: Preferential,
     }
   ]
 })
