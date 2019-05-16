@@ -6,8 +6,7 @@
       <Notice></Notice>
       <div class="register-box border-box flex col">
         <p class="font24 colorWhite text-center">
-          <span>鼎盛国际娱乐</span>
-          -恭迎您的加入
+          <span>鼎盛国际娱乐</span>-恭迎您的加入
         </p>
         <div class="flex1 relative">
           <p class="absolute font16 text-center">立即加入</p>
@@ -62,7 +61,9 @@
               <p class="font15 mar-l15 register-btn text-center pointer opacity8 hover">立即注册</p>
             </div>
             <div class="flex">
-              <p class="colorWhite font14" style="margin-left: 100px;">已有鼎盛国际账号？<span class="pointer hover" style="color: #c4a04b;">立即登录</span></p>
+              <p class="colorWhite font14" style="margin-left: 100px;">已有鼎盛国际账号？<span class="pointer hover"
+                                                                                      style="color: #c4a04b;">立即登录</span>
+              </p>
             </div>
           </div>
         </div>

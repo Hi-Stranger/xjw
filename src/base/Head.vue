@@ -46,7 +46,7 @@
     </div>
     <div class="to-page">
       <div class="flex margin-auto max-1000 text-center colorWhite">
-        <router-link to="/" tag="p">首页</router-link>
+        <router-link to="/core" tag="p">首页</router-link>
         <p>体育投注</p>
         <router-link to="/entertainment" tag="p" class="relative">
           真人娱乐
