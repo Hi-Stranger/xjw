@@ -24,7 +24,8 @@
         </div>
         <div class="flex1 border-box pad-10">
           <Account v-if="current == 0"></Account>
-          <Record v-else-if="current == 1"></Record>
+          <GameRecord v-else-if="current == 1"></GameRecord>
+          <RechargeRecord v-else></RechargeRecord>
         </div>
       </div>
     </div>
@@ -34,11 +35,12 @@
 
 <script>
   import Account from '../base/Account';
-  import Record from '../base/Record';
+  import GameRecord from '../base/GameRecord';
+  import RechargeRecord from '../base/RechargeRecord';
 
   export default {
     name: "Core",
-    components: {Account, Record},
+    components: {Account, GameRecord, RechargeRecord},
     data() {
       return {
         current: 1

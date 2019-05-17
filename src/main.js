@@ -6,9 +6,12 @@ import router from './router';
 import Vant from 'vant';
 import myComponts from './base';
 import 'vant/lib/index.css';
+import 'iview/dist/styles/iview.css';
 import '../static/css/index.less';
+import {DatePicker, Page} from 'iview';
 
-
+Vue.component('DatePicker', DatePicker);
+Vue.component('Page', Page);
 Vue.use(Vant);
 Vue.use(myComponts);
 Vue.config.productionTip = false;
