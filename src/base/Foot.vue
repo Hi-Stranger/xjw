@@ -7,7 +7,7 @@
       <div class="max-1000 min-1000 margin-auto absolute">
         <img src="../../static/img/footer_img.png" alt="图片显示错误">
         <div class="flex col font12">
-          <div class="flex just-center mar-t15">
+          <div class="flex just-center mar-b15">
             <p class="pointer hover">关于我们</p>
             <p class="division pointer hover">联系我们</p>
             <p class="division pointer hover">常见问题</p>
@@ -15,7 +15,7 @@
             <p class="division pointer hover">代理加盟</p>
             <p class="division pointer hover">客户端</p>
           </div>
-          <div class="text-center mar-t25">
+          <div class="text-center mar-b25">
             <span>2018鼎盛国际版权所有</span>
             <span class="pad-l15">all rights reserved</span>
           </div>

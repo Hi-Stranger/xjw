@@ -8,19 +8,23 @@
         <div class="tab-box relative">
           <img class="full-height absolute" src="../../static/img/sjx.png" alt="图片显示错误">
           <div class="flex tab-chose full-height items-center">
-            <p class="current flex col just-between items-center font12 full-height border-box pointer relative">
+            <p @click="current = 0" :class="{'current':current == 0}"
+               class="flex col just-between items-center font12 full-height border-box pointer relative">
               <i class="iconfont font25 text-center colorWhite" style="background-color: #f59a2f;">&#xe641;</i>账户首页
             </p>
-            <p class="flex col just-between items-center font12 full-height border-box pointer relative">
+            <p @click="current = 1" :class="{'current':current == 1}"
+               class="flex col just-between items-center font12 full-height border-box pointer relative">
               <i class="iconfont font25 text-center colorWhite" style="background-color: #f16346;">&#xe658;</i>游戏记录
             </p>
-            <p class="flex col just-between items-center font12 full-height border-box pointer relative">
+            <p @click="current = 2" :class="{'current':current == 2}"
+               class="flex col just-between items-center font12 full-height border-box pointer relative">
               <i class="iconfont font25 text-center colorWhite" style="background-color: #2c7fe3;">&#xe61d;</i>充值记录
             </p>
           </div>
         </div>
         <div class="flex1 border-box pad-10">
-
+          <Account v-if="current == 0"></Account>
+          <Record v-else-if="current == 1"></Record>
         </div>
       </div>
     </div>
@@ -29,11 +33,15 @@
 </template>
 
 <script>
+  import Account from '../base/Account';
+  import Record from '../base/Record';
+
   export default {
     name: "Core",
+    components: {Account, Record},
     data() {
       return {
-        active: 0
+        current: 1
       }
     }
   }
