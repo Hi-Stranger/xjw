@@ -11,31 +11,32 @@
       <div :style="{'height':current == 0 ? '105px' : '340px'}" class="content-box">
         <div v-if="current == 0" class="check-one flex just-between full-height">
           <div class="flex col pad-l15 border-box full-height font14">
-            <p class="colorBlack mar-t10 mar-b15"><i class="visibility-hidden">占位</i><span>会员账号：</span>aaa123</p>
-            <p class="colorBlack mar-b10"><span>上次登陆时间：</span>2019-05-05 12：02：56</p>
+            <p class="colorBlack mar-t10 mar-b15"><i class="visibility-hidden">占位</i><span>会员账号：</span>{{userinfo.username}}
+            </p>
+            <p class="colorBlack mar-b10"><span>上次登陆时间：</span>{{userinfo.last_login_time}}</p>
             <p class="text-center colorWhite pointer hover">退出账号</p>
           </div>
           <div class="check-money flex col just-center">
-            <p class="font24">0.00</p>
+            <p class="font24">{{userinfo.balance}}</p>
             <p class="flex items-center font14">总余额<i class="iconfont pointer font21">&#xe604;</i></p>
           </div>
         </div>
         <div v-else class="check-two font14">
           <div class="flex">
             <p><i class="visibility-hidden">占</i>旧密码：</p>
-            <input class="border-box" type="password">
+            <input v-model="oldPassword" class="border-box" type="password">
           </div>
           <div class="flex">
             <p><i class="visibility-hidden">占</i>新密码：</p>
-            <input class="border-box" type="password">
+            <input v-model="newPassword" class="border-box" type="password">
             <span class="font14 colorGray">*6-20个常规字符</span>
           </div>
           <div class="flex">
             <p>确认密码：</p>
-            <input class="border-box" type="password">
+            <input v-model="renewPassword" class="border-box" type="password">
             <span class="font14 colorGray">*6-20个常规字符</span>
           </div>
-          <p class="save-btn font14 colorWhite text-center pointer hover">保存</p>
+          <p @click="changePassword" class="save-btn font14 colorWhite text-center pointer hover">保存</p>
         </div>
       </div>
     </div>
@@ -43,11 +44,65 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex';
+  import * as Types from '../store/mutations-type';
+  import {repassword} from '../api';
+
   export default {
     name: "Account",
     data() {
       return {
-        current: 0
+        current: 0,
+        oldPassword: '',
+        newPassword: '',
+        renewPassword: '',
+      }
+    },
+    computed: {
+      ...mapState(['userinfo', 'config'])
+    },
+    created() {
+      console.log(this.userinfo);
+    },
+    methods: {
+      changePassword() {
+        let msg = '';
+        if (!this.oldPassword) msg = '请输入旧密码';
+        if (!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/.test(this.newPassword)) || this.newPassword.length < 6 || this.newPassword.length > 12) msg = '会员密码为6-12位的数字和字母组成的密码';
+        if (this.renewPassword != this.newPassword) msg = '新密码输入不一致';
+        if (msg) {
+          this.$dialog.alert({
+            title: '重要提醒',
+            message: msg,
+            lockScroll: false,
+          });
+          return;
+        }
+        repassword({
+          user_id: this.userinfo.user_id,
+          old_password: this.oldPassword,
+          password: this.renewPassword,
+          domain: localStorage.agent,
+        }, {token: this.userinfo.token}).then((resp) => {
+          if (resp.code != 0) {
+            this.$dialog.alert({
+              title: '重要提醒',
+              message: resp.message,
+              lockScroll: false,
+            });
+            return;
+          } else {
+            let _this = this;
+            this.$toast.success({
+              message: resp.data.msg,
+              duration: 2000,
+              onClose() {
+                _this.$store.commit(Types.SETOUT);
+                _this.$router.push('/');
+              }
+            });
+          }
+        });
       }
     }
   }

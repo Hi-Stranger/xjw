@@ -46,7 +46,8 @@
     </div>
     <div class="to-page">
       <div class="flex margin-auto max-1000 text-center colorWhite">
-        <router-link :class="{'current':$route.name == 'Home' || $route.name == 'Register' || $route.name == 'Core'}" to="/" tag="p">首页
+        <router-link :class="{'current':$route.name == 'Home' || $route.name == 'Register' || $route.name == 'Core'}"
+                     to="/" tag="p">首页
         </router-link>
         <p @click="headTip">体育投注</p>
         <router-link :class="{'current':$route.name == 'Entertainment'}" to="/entertainment" tag="p" class="relative">
@@ -89,9 +90,9 @@
       ...mapState(['userinfo'])
     },
     created() {
-      this.$nextTick(() => {
-        console.log(this.$route);
-      });
+      // this.$nextTick(() => {
+      //   console.log(this.$route);
+      // });
     },
     methods: {
       SignIn() { //登陆

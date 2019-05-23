@@ -21,3 +21,11 @@ export let login = (data) => {
   return axios.post("/login", data);
 };
 
+//修改密码
+export let repassword = (data, token) => {
+  return axios.post("/api/modify_password", data, {
+    headers: token
+  });
+};
+
+
