@@ -15,13 +15,13 @@
           <p class="pointer hover relative">加入收藏</p>
           <img src="../../static/img/s_img.png" alt="图片显示错误">
         </div>
-        <div v-if="user" class="sign-in flex just-between">
+        <div v-if="!userinfo.username" class="sign-in flex just-between">
           <div class="flex col just-between full-height">
-            <input class="font12" type="text" placeholder="请输入账号">
-            <input class="font12" type="password" placeholder="请输入密码">
+            <input v-model="account" class="font12" type="text" placeholder="请输入账号">
+            <input v-model="password" class="font12" type="password" placeholder="请输入密码">
           </div>
           <div class="sign-group flex col just-between">
-            <p class="sign-btn font12 text-center pointer opacity8">登入</p>
+            <p @click="SignIn" class="sign-btn font12 text-center pointer opacity8">登入</p>
             <p class="font12 text-center colorWhite pointer hover">忘记密码</p>
           </div>
           <router-link to="/register" tag="div" class="join-box">
@@ -31,36 +31,38 @@
         <div v-else class="user-info flex col just-between">
           <div class="flex just-end">
             <span class="colorWhite font12">欢迎您，</span>
-            <span class="colorRed font13">aa123</span>
+            <span class="colorRed font13">{{userinfo.username}}</span>
             <span class="colorWhite font12">余额：￥</span>
-            <span class="colorRed font13">0.00</span>
+            <span class="colorRed font13">{{userinfo.balance}}</span>
           </div>
           <div class="flex just-between colorWhite font13">
-            <p class="pointer hover">会员中心</p>
-            <p class="relative division pointer hover">游戏记录</p>
-            <p class="relative division pointer hover">充值记录</p>
-            <p class="relative division pointer hover">登出</p>
+            <router-link to="/core" tag="p" class="pointer hover">会员中心</router-link>
+            <p @click="headTip" class="relative division pointer hover">游戏记录</p>
+            <p @click="headTip" class="relative division pointer hover">充值记录</p>
+            <p @click="SetOut" class="relative division pointer hover">登出</p>
           </div>
         </div>
       </div>
     </div>
     <div class="to-page">
       <div class="flex margin-auto max-1000 text-center colorWhite">
-        <router-link to="/core" tag="p">首页</router-link>
-        <p>体育投注</p>
-        <router-link to="/entertainment" tag="p" class="relative">
+        <router-link :class="{'current':$route.name == 'Home' || $route.name == 'Register' || $route.name == 'Core'}" to="/" tag="p">首页
+        </router-link>
+        <p @click="headTip">体育投注</p>
+        <router-link :class="{'current':$route.name == 'Entertainment'}" to="/entertainment" tag="p" class="relative">
           真人娱乐
           <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
         </router-link>
-        <p>电子游艺</p>
-        <p>时时彩</p>
-        <p class="other-color">六合投注</p>
-        <p>彩票游戏</p>
-        <p class="relative">
+        <p @click="headTip">电子游艺</p>
+        <p @click="headTip">时时彩</p>
+        <p @click="headTip" class="other-color">六合投注</p>
+        <p @click="headTip">彩票游戏</p>
+        <p @click="headTip" class="relative">
           棋牌游戏
           <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
         </p>
-        <router-link to="/preferential" tag="p" class="relative other-color">
+        <router-link :class="{'current':$route.name == 'Preferential'}" to="/preferential" tag="p"
+                     class="relative other-color">
           优惠活动
           <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
         </router-link>
@@ -71,11 +73,76 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex';
+  import * as Types from '../store/mutations-type';
+  import {login} from '../api';
+
   export default {
     name: "Head",
     data() {
       return {
-        user: true
+        account: '',
+        password: '',
+      }
+    },
+    computed: {
+      ...mapState(['userinfo'])
+    },
+    created() {
+      this.$nextTick(() => {
+        console.log(this.$route);
+      });
+    },
+    methods: {
+      SignIn() { //登陆
+        if (!this.account || !this.password || this.account.length < 6 || this.account.length > 12 || this.password < 6 || this.password.length > 12) {
+          this.$dialog.alert({
+            title: '重要提醒',
+            message: '请输入6-12位字符账户或密码',
+            lockScroll: false,
+          });
+          return;
+        }
+        login({
+          username: this.account,
+          password: this.password,
+          domain: localStorage.agent,
+        }).then((resp) => {
+          if (resp.code && resp.code != 0) {
+            this.$dialog.alert({
+              title: '重要提醒',
+              message: resp.message,
+              lockScroll: false,
+            });
+            return;
+          } else {
+            let _this = this;
+            this.$toast.success({
+              message: '登陆成功',
+              duration: 2000,
+              onClose() {
+                _this.$store.commit(Types.SETINFO, resp.data);
+                _this.$router.push('/');
+              }
+            });
+          }
+        }).catch((err) => {
+          console.log(err);
+        });
+      },
+      SetOut() { //退出
+        this.$store.commit(Types.SETOUT);
+        this.$router.push('/');
+      },
+      headTip() {  //暂未开放
+        this.$dialog.alert({
+          title: '重要提醒',
+          message: '功能暂未开通，敬请期待！',
+          lockScroll: false,
+        });
+        setTimeout(() => {
+          this.$dialog.close();
+        }, 2000);
       }
     }
   }
@@ -158,7 +225,7 @@
 
           .sign-btn {
             color: #fefefe;
-            /*<!--background: url("../../static/img/dengru_btn.png") no-repeat 100% 100%/contain;-->*/
+            background: url("../../static/img/dengru_btn.png") no-repeat left 100%/contain;
           }
         }
 
@@ -216,6 +283,11 @@
 
       .other-color {
         color: #ffff00;
+      }
+
+      p.current {
+        background: url("../../static/img/nav_hover_bg.jpg") repeat-x 100% 100%/contain;
+        color: #314787;
       }
 
       p:hover {

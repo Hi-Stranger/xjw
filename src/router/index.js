@@ -13,22 +13,25 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home,
-    }, {
-      path: '/register',
-      name: 'Register',
-      component: Register,
-    }, {
-      path: '/entertainment',
-      name: 'Entertainment',
-      component: Entertainment,
-    }, {
-      path: '/preferential',
-      name: 'Preferential',
-      component: Preferential,
-    }, {
-      path: '/core',
-      name: 'Core',
-      component: Core,
+      children: [
+        {
+          path: '/register',
+          name: 'Register',
+          component: Register,
+        }, {
+          path: '/entertainment',
+          name: 'Entertainment',
+          component: Entertainment,
+        }, {
+          path: '/preferential',
+          name: 'Preferential',
+          component: Preferential,
+        }, {
+          path: '/core',
+          name: 'Core',
+          component: Core,
+        }
+      ],
     }
   ]
 })

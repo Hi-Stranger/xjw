@@ -4,22 +4,30 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import Vant from 'vant';
+import {Toast, Dialog, Loading} from 'vant';
 import myComponts from './base';
+import store from './store';
 import 'vant/lib/index.css';
 import 'iview/dist/styles/iview.css';
 import '../static/css/index.less';
-import {DatePicker, Page} from 'iview';
+import {DatePicker, Page, Spin} from 'iview';
 
 Vue.component('DatePicker', DatePicker);
 Vue.component('Page', Page);
+Vue.component('Spin', Spin);
 Vue.use(Vant);
+Vue.use(Toast);
+Vue.use(Dialog);
+Vue.use(Loading);
 Vue.use(myComponts);
 Vue.config.productionTip = false;
+
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: {App},
   template: '<App/>'
 });

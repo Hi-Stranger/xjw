@@ -1,32 +1,34 @@
 <template>
   <div class="xjw-entertainment main-box">
-    <Head></Head>
-    <Banner2></Banner2>
-    <div class="content relative min-1000 max-1000 margin-auto">
-      <Notice></Notice>
-      <div class="entertainment-box min-1000 max-1000 border-box flex col">
-        <p class="entertainment-title font14">视讯直播</p>
-        <div class="flex warp flex1 border-box">
-          <div v-for="l in activeList" class="active-box border-box pointer">
-            <div class="flex active-title just-center">
-              <img class="full-height" src="../../static/img/logo2.png" alt="图片显示错误">
-              <p class="font18 colorWhite">鼎盛国际</p>
-            </div>
-            <div class="active-img relative">
-              <img class="full-width" src="../../static/img/tupian1.png" alt="图片显示错误">
-              <div class="absolute full-width full-height border-box">
-                <p class="font16 colorWhite text-center margin-auto pointer hover">进入游戏</p>
+    <div class="full-height full-width overflowY">
+      <Head></Head>
+      <Banner2></Banner2>
+      <div class="content relative min-1000 max-1000 margin-auto">
+        <Notice></Notice>
+        <div class="entertainment-box min-1000 max-1000 border-box flex col">
+          <p class="entertainment-title font14">视讯直播</p>
+          <div class="flex warp flex1 border-box">
+            <div v-for="l in activeList" class="active-box border-box pointer">
+              <div class="flex active-title just-center">
+                <img class="full-height" src="../../static/img/logo2.png" alt="图片显示错误">
+                <p class="font18 colorWhite">鼎盛国际</p>
               </div>
+              <div class="active-img relative">
+                <img class="full-width" src="../../static/img/tupian1.png" alt="图片显示错误">
+                <div class="absolute full-width full-height border-box">
+                  <p class="font16 colorWhite text-center margin-auto pointer hover">进入游戏</p>
+                </div>
+              </div>
+              <p class="font14 colorWhite text-center">美女荷官性感刺激</p>
             </div>
-            <p class="font14 colorWhite text-center">美女荷官性感刺激</p>
-          </div>
-          <div class="active-box border-box flex col just-center">
-            <img class="margin-auto" src="../../static/img/upcoming.png" alt="图片显示错误" style="width: 96px;">
+            <div class="active-box border-box flex col just-center">
+              <img class="margin-auto" src="../../static/img/upcoming.png" alt="图片显示错误" style="width: 96px;">
+            </div>
           </div>
         </div>
       </div>
+      <Foot :translate="600"></Foot>
     </div>
-    <Foot :translate="600"></Foot>
   </div>
 </template>
 
@@ -43,7 +45,7 @@
 
 <style lang="less">
   .xjw-entertainment {
-    > .content {
+    > div > .content {
       transform: translate(0, -300px);
     }
 
