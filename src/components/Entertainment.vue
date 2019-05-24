@@ -47,6 +47,17 @@
     },
     methods: {
       goGame() {
+        if (!this.userinfo.para) {
+          this.$dialog.alert({
+            title: '重要提醒',
+            message: '请先登陆',
+            lockScroll: false,
+          });
+          setTimeout(() => {
+            this.$dialog.close();
+          }, 2000);
+          return;
+        }
         window.open(this.userinfo.para);
       }
     }

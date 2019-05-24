@@ -18,7 +18,8 @@
           </div>
           <div class="check-money flex col just-center">
             <p class="font24">{{userinfo.balance}}</p>
-            <p class="flex items-center font14">总余额<i class="iconfont pointer font21">&#xe604;</i></p>
+            <p class="flex items-center font14">总余额</p>
+            <!--<i class="iconfont pointer font21">&#xe604;</i>-->
           </div>
         </div>
         <div v-else class="check-two font14">

@@ -31,12 +31,23 @@ new Vue({
   components: {App},
   template: '<App/>'
 });
-// window.onload = function(){
-  // let encrypt = new Object();
-  // encrypt.account= 'pjj001';
-  // encrypt.password= '123456';
-  // let userInfo=JSON.stringify(encrypt);
-  // let encryptAfter=encryptAES(userInfo);
-  // location.href = 'http://www.baidu.com/?para='+encryptAfter;
-  // console.log(1111);
-// };
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/core') {
+    if (Object.keys(store._modules.root.state.userinfo).length == 0) {
+      Dialog.alert({
+        title: '重要提醒',
+        message: '请先登陆',
+        lockScroll: false,
+      });
+      setTimeout(() => {
+        Dialog.close();
+        router.go(-1);
+      }, 2000);
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});

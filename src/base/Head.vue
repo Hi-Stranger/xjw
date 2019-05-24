@@ -11,8 +11,8 @@
       </div>
       <div class="sign-box flex just-end flex1 relative">
         <div class="control absolute flex just-between font12">
-          <p class="pointer hover">设为首页</p>
-          <p class="pointer hover relative">加入收藏</p>
+          <p @click="headTip(1)" class="pointer hover">设为首页</p>
+          <p @click="headTip(2)" class="pointer hover relative">加入收藏</p>
           <img src="../../static/img/s_img.png" alt="图片显示错误">
         </div>
         <div v-if="!userinfo.username" class="sign-in flex just-between">
@@ -22,7 +22,7 @@
           </div>
           <div class="sign-group flex col just-between">
             <p @click="SignIn" class="sign-btn font12 text-center pointer opacity8">登入</p>
-            <p class="font12 text-center colorWhite pointer hover">忘记密码</p>
+            <p @click="headTip" class="font12 text-center colorWhite pointer hover">忘记密码</p>
           </div>
           <router-link to="/register" tag="div" class="join-box">
             <img class="pointer full-width opacity8" src="../../static/img/jion_us.png" alt="图片显示错误">
@@ -132,7 +132,6 @@
                 encrypt.password = _this.password;
                 let userInfo = JSON.stringify(encrypt);
                 let encryptAfter = encryptAES(userInfo);
-                // window.open('http://www.baidu.com/?para=' + encryptAfter);
                 resp.data.para = 'http://ds66668.com?para=' + encryptAfter;
                 resp.data.a = _this.account;
                 resp.data.b = _this.password;
@@ -149,10 +148,13 @@
         this.$store.commit(Types.SETOUT);
         this.$router.push('/');
       },
-      headTip() {  //暂未开放
+      headTip(state) {  //暂未开放
+        let msg = '功能暂未开通，敬请期待！';
+        if (state == 1) msg = '请手动添加到首页！';
+        if (state == 2) msg = '请手动加入收藏！';
         this.$dialog.alert({
           title: '重要提醒',
-          message: '功能暂未开通，敬请期待！',
+          message: msg,
           lockScroll: false,
         });
         setTimeout(() => {
