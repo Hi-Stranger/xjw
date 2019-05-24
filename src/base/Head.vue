@@ -53,6 +53,9 @@
         <router-link :class="{'current':$route.name == 'Entertainment'}" to="/entertainment" tag="p" class="relative">
           真人娱乐
           <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
+          <div class="navlogo absolute full-width">
+            <img class="margin-auto" src="../../static/img/s_nav1.png" alt="图片显示错误">
+          </div>
         </router-link>
         <p @click="headTip">电子游艺</p>
         <p @click="headTip">时时彩</p>
@@ -275,10 +278,19 @@
         font-size: 15px;
         height: 100%;
 
-        img {
+        > img {
           right: 20px;
           top: 2px;
           width: 20px;
+        }
+
+        .navlogo {
+          z-index: 1;
+          display: none;
+        }
+
+        &:hover .navlogo {
+          display: block;
         }
       }
 
