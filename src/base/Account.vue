@@ -14,7 +14,7 @@
             <p class="colorBlack mar-t10 mar-b15"><i class="visibility-hidden">占位</i><span>会员账号：</span>{{userinfo.username}}
             </p>
             <p class="colorBlack mar-b10"><span>上次登陆时间：</span>{{userinfo.last_login_time}}</p>
-            <p class="text-center colorWhite pointer hover">退出账号</p>
+            <p @click="SetOut" class="text-center colorWhite pointer hover">退出账号</p>
           </div>
           <div class="check-money flex col just-center">
             <p class="font24">{{userinfo.balance}}</p>
@@ -62,7 +62,6 @@
       ...mapState(['userinfo', 'config'])
     },
     created() {
-      console.log(this.userinfo);
     },
     methods: {
       changePassword() {
@@ -78,12 +77,14 @@
           });
           return;
         }
+        this.$store.commit('SETLOAD', true);
         repassword({
           user_id: this.userinfo.user_id,
           old_password: this.oldPassword,
           password: this.renewPassword,
           domain: localStorage.agent,
         }, {token: this.userinfo.token}).then((resp) => {
+          this.$store.commit('SETLOAD', false);
           if (resp.code != 0) {
             this.$dialog.alert({
               title: '重要提醒',
@@ -103,7 +104,11 @@
             });
           }
         });
-      }
+      },
+      SetOut() { //退出
+        this.$store.commit(Types.SETOUT);
+        this.$router.push('/');
+      },
     }
   }
 </script>

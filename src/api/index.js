@@ -1,8 +1,9 @@
 import axios from "axios";
+import Vue from "vue";
 //增加默认请求路径
 axios.defaults.baseURL = "http://hl66899.com";
 axios.interceptors.response.use((res) => {
-  if (res.data) return res.data
+  if (res.data) return res.data;
   return res; //在这里统一拦截结果
 });
 //获取平台配置
@@ -27,5 +28,6 @@ export let repassword = (data, token) => {
     headers: token
   });
 };
+
 
 

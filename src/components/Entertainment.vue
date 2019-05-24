@@ -16,7 +16,7 @@
               <div class="active-img relative">
                 <img class="full-width" src="../../static/img/tupian1.png" alt="图片显示错误">
                 <div class="absolute full-width full-height border-box">
-                  <p class="font16 colorWhite text-center margin-auto pointer hover">进入游戏</p>
+                  <p @click="goGame" class="font16 colorWhite text-center margin-auto pointer hover">进入游戏</p>
                 </div>
               </div>
               <p class="font14 colorWhite text-center">美女荷官性感刺激</p>
@@ -33,11 +33,21 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex';
+
   export default {
     name: "Entertainment",
     data() {
       return {
         activeList: 1
+      }
+    },
+    computed: {
+      ...mapState(['userinfo'])
+    },
+    methods: {
+      goGame() {
+        window.open(this.userinfo.para);
       }
     }
   }

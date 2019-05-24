@@ -10,6 +10,9 @@
       <Foot :translate="425"></Foot>
       <router-view></router-view>
     </div>
+    <div v-show="config.load" class="load-box fixed full-width full-height flex just-center items-center">
+      <van-loading type="spinner"/>
+    </div>
   </div>
 </template>
 
@@ -34,7 +37,9 @@
       this.$nextTick(() => {
         localStorage.agent = '888888.com';
         let query = this.$route.query.agent || localStorage.agent;
+        this.$store.commit('SETLOAD', true);
         getconfigure(query).then((resp) => {
+          this.$store.commit('SETLOAD', false);
           this.$store.commit(Types.NOTICE, resp.message);
         });
       });
@@ -42,4 +47,11 @@
   }
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+  .load-box {
+    z-index: 10;
+    background-color: rgba(0, 0, 0, .3);
+    top: 0;
+    left: 0;
+  }
+</style>
