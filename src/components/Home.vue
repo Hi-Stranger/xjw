@@ -35,7 +35,7 @@
     },
     created() {
       this.$nextTick(() => {
-        localStorage.agent = (window.location.href).split(".") + ".com";
+        localStorage.agent = (window.location.href).split(".")[1] + ".com";
         let query = this.$route.query.agent || localStorage.agent;
         this.$store.commit('SETLOAD', true);
         getconfigure(query).then((resp) => {
