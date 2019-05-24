@@ -35,7 +35,7 @@
     },
     created() {
       this.$nextTick(() => {
-        localStorage.agent = '888888.com';
+        localStorage.agent = (window.location.href).split(".") + ".com";
         let query = this.$route.query.agent || localStorage.agent;
         this.$store.commit('SETLOAD', true);
         getconfigure(query).then((resp) => {
