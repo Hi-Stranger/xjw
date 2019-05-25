@@ -11,7 +11,7 @@
 </script>
 
 <style lang="less">
-  body {
+  body, html {
     font-family: MicrosoftYaHei;
     line-height: unset;
     color: unset;

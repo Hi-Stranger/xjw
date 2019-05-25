@@ -157,9 +157,9 @@
           message: msg,
           lockScroll: false,
         });
-        // setTimeout(() => {
-        //   this.$dialog.close();
-        // }, 2000);
+        setTimeout(() => {
+          this.$dialog.close();
+        }, 2000);
       }
     }
   }
