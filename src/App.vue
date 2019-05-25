@@ -11,6 +11,12 @@
 </script>
 
 <style lang="less">
+  body {
+    font-family: MicrosoftYaHei;
+    line-height: unset;
+    color: unset;
+  }
+
   .main-box {
     background: rgba(6, 9, 18, 1);
     position: fixed;

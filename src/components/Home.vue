@@ -1,7 +1,8 @@
 <template>
   <div class="xjw-home main-box">
-    <div class="full-height full-width overflowY">
+    <div class="full-height full-width overflowY relative">
       <Head></Head>
+      <!--<Flash></Flash>-->
       <Banner></Banner>
       <div class="content relative min-1000 max-1000 margin-auto">
         <Notice></Notice>
@@ -20,11 +21,12 @@
   import {mapState} from 'vuex';
   import * as Types from '../store/mutations-type';
   import About from '../base/About';
+  import Flash from '../base/Flash';
   import {getconfigure} from '../api';
 
   export default {
     name: "Home",
-    components: {About},
+    components: {About, Flash},
     data() {
       return {
         spinShow: true,

@@ -25,7 +25,7 @@
             <p @click="headTip" class="font12 text-center colorWhite pointer hover">忘记密码</p>
           </div>
           <router-link to="/register" tag="div" class="join-box">
-            <img class="pointer full-width opacity8" src="../../static/img/jion_us.png" alt="图片显示错误">
+            <img class="pointer opacity8" src="../../static/img/jion_us.png" alt="图片显示错误">
           </router-link>
         </div>
         <div v-else class="user-info flex col just-between">
@@ -157,9 +157,9 @@
           message: msg,
           lockScroll: false,
         });
-        setTimeout(() => {
-          this.$dialog.close();
-        }, 2000);
+        // setTimeout(() => {
+        //   this.$dialog.close();
+        // }, 2000);
       }
     }
   }
@@ -293,8 +293,9 @@
 
         > img {
           right: 20px;
-          top: 2px;
-          width: 20px;
+          top: 1px;
+          /*top: 2px;*/
+          /*width: 20px;*/
         }
 
         .navlogo {

@@ -1,10 +1,15 @@
 <template>
-  <div class="banner relative min-1000"></div>
+  <div class="banner relative min-1000">
+    <Flash></Flash>
+  </div>
 </template>
 
 <script>
+  import Flash from './Flash';
+
   export default {
-    name: "Banner"
+    name: "Banner",
+    components: {Flash}
   }
 </script>
 
