@@ -35,7 +35,7 @@
     },
     created() {
       this.$nextTick(() => {
-        let _url = (window.location.href).split(".");
+        let _url = (window.location.host).split(".");
         localStorage.agent = (_url[0]).toLocaleLowerCase() == 'www' ? _url[1] + ".com" : _url[0] + ".com";
         let query = this.$route.query.agent || localStorage.agent;
         this.$store.commit('SETLOAD', true);
