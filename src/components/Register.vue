@@ -94,6 +94,11 @@
         InWx: '', //微信号码
       }
     },
+    created() {
+      this.$nextTick(() => {
+
+      });
+    },
     methods: {
       HandleRegister() { //注册
         let msg = '';
@@ -229,7 +234,7 @@
     }
 
     .van-checkbox__icon, .van-checkbox__label {
-      line-height: 26px;
+      line-height: 22px;
     }
   }
 </style>
