@@ -7,7 +7,14 @@ import Preferential from '@/components/Preferential'; //优惠活动
 import Core from '@/components/Core'; //会员中心
 Vue.use(Router);
 
+function getAbsolutePath() {
+  let path = location.pathname
+  return path.substring(0, path.lastIndexOf('/') + 1)
+}
+
 export default new Router({
+  mode: 'history',
+  base: getAbsolutePath(),
   routes: [
     {
       path: '/',
@@ -32,6 +39,10 @@ export default new Router({
           component: Core,
         }
       ],
+    },
+    {
+      path: '*',
+      redirect: '/',
     }
   ]
 })

@@ -94,11 +94,6 @@
         InWx: '', //微信号码
       }
     },
-    created() {
-      this.$nextTick(() => {
-
-      });
-    },
     methods: {
       HandleRegister() { //注册
         let msg = '';
@@ -143,7 +138,6 @@
               message: resp.data.msg,
               duration: 2000,
               onClose() {
-
                 _this.checked = false;
               }
             });

@@ -10,7 +10,7 @@
         <param value="high" name="quality">
         <embed width="600" height="350" wmode="transparent" type="application/x-shockwave-flash"
                pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high"
-               src="../../static/img/banner.swf">
+               src="./static/img/banner.swf">
       </object>
     </div>
   </div>
