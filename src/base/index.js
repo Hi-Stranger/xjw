@@ -5,6 +5,7 @@ import Banner2 from './Banner2.vue';
 import Banner3 from './Banner3.vue';
 import Notice from './Notice.vue';
 import Foot from './Foot.vue';
+import LeftSuspension from './LeftSuspension';
 
 const myComponts = {
   install: function (Vue) {
@@ -15,6 +16,7 @@ const myComponts = {
     Vue.component('Banner3', Banner3);
     Vue.component('Notice', Notice);
     Vue.component('Foot', Foot);
+    Vue.component('LeftSuspension', LeftSuspension);
   }
 };
 

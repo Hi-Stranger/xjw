@@ -13,6 +13,7 @@
     <div v-show="config.load" class="load-box fixed full-width full-height flex just-center items-center">
       <van-loading type="spinner"/>
     </div>
+    <LeftSuspension></LeftSuspension>
   </div>
 </template>
 
@@ -35,13 +36,14 @@
     },
     created() {
       this.$nextTick(() => {
-        let _url = (window.location.host).split(".");
-        localStorage.agent = (_url[0]).toLocaleLowerCase() == 'www' ? _url[1] + ".com" : _url[0] + ".com";
+        // let _url = (window.location.host).split(".");
+        // localStorage.agent = (_url[0]).toLocaleLowerCase() == 'www' ? _url[1] + ".com" : _url[0] + ".com";
+        localStorage.agent = 'ds22229.com';
         let query = this.$route.query.agent || localStorage.agent;
         this.$store.commit('SETLOAD', true);
         getconfigure(query).then((resp) => {
           this.$store.commit('SETLOAD', false);
-          this.$store.commit(Types.NOTICE, resp.message);
+          this.$store.commit(Types.NOTICE, resp.data);
         });
       });
     }
