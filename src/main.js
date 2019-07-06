@@ -11,7 +11,9 @@ import 'vant/lib/index.css';
 import 'iview/dist/styles/iview.css';
 import '../static/css/index.less';
 import {DatePicker, Page, Spin} from 'iview';
+import MinXin from './components/mixins.js';
 
+Vue.mixin(MinXin);
 Vue.component('DatePicker', DatePicker);
 Vue.component('Page', Page);
 Vue.component('Spin', Spin);

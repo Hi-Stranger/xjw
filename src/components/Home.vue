@@ -1,6 +1,6 @@
 <template>
   <div class="xjw-home main-box">
-    <div class="full-height full-width overflowY relative">
+    <div ref="scrollBox" class="full-height full-width overflowY relative">
       <Head></Head>
       <Banner></Banner>
       <div class="content relative min-1000 max-1000 margin-auto">
@@ -14,6 +14,7 @@
       <van-loading type="spinner"/>
     </div>
     <LeftSuspension></LeftSuspension>
+    <RightSuspension></RightSuspension>
   </div>
 </template>
 
@@ -36,16 +37,25 @@
     },
     created() {
       this.$nextTick(() => {
+        this.scrollWidth();
         // let _url = (window.location.host).split(".");
         // localStorage.agent = (_url[0]).toLocaleLowerCase() == 'www' ? _url[1] + ".com" : _url[0] + ".com";
         localStorage.agent = 'ds22229.com';
         let query = this.$route.query.agent || localStorage.agent;
         this.$store.commit('SETLOAD', true);
+        this.scrollWidth();
         getconfigure(query).then((resp) => {
           this.$store.commit('SETLOAD', false);
           this.$store.commit(Types.NOTICE, resp.data);
         });
       });
+    },
+    methods: {
+      scrollWidth() {  //计算滚动条宽度
+        let a = window.innerWidth;
+        let b = this.$refs.scrollBox.clientWidth;
+        this.$store.commit(Types.SCROLLWIDTH, a -b);
+      }
     }
   }
 </script>

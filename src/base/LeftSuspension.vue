@@ -1,12 +1,12 @@
 <template>
-  <div class="LeftSuspension-box fixed">
+  <div v-show="showLeft" class="LeftSuspension-box fixed">
     <img class="full-width" src="../../static/img/left_bg.png" alt="图片显示错误">
     <div class="absolute full-width text-center">
       <p><b>欢迎光临</b></p>
       <p class="colorWhite font14">WELCOME</p>
       <p class="font24 colorWhite">加入收藏</p>
       <div class="border-box mar-b10">
-        <a href="javascript:;" class="font17 hover">苹果下载帮助</a>
+        <a @click="routerYz" href="javascript:;" class="font17 hover">苹果下载帮助</a>
       </div>
       <p class="font20 colorWhite">手机版下载</p>
       <div class="border-box pad-l10 pad-r10">
@@ -22,7 +22,7 @@
           Android
         </p>
       </div>
-      <p class="colorWhite font14 pointer hover">关闭</p>
+      <p @click="showLeft = false" class="colorWhite font14 pointer hover">关闭</p>
     </div>
   </div>
 </template>
@@ -35,11 +35,17 @@
     computed: {
       ...mapState(['config'])
     },
+    data() {
+      return {
+        showLeft: true
+      }
+    }
   }
 </script>
 
 <style lang="less">
   .LeftSuspension-box {
+    z-index: 1;
     width: 160px;
     left: 0;
     top: 50%;
@@ -64,7 +70,7 @@
 
       > p:nth-child(3) {
         background: url("../../static/img/guang.png") no-repeat top center;
-        padding: 14px 0 8px 0;
+        padding: 10px 0 8px 0;
       }
 
       > div:nth-child(4) {
@@ -74,7 +80,7 @@
         a {
           display: block;
           color: #181818;
-          line-height: 46px;
+          line-height: 33px;
           border-radius: 17px;
           background-color: #ebd85e;
         }
@@ -89,6 +95,7 @@
 
         img {
           padding: 3px;
+          min-height: 140px;
         }
       }
 

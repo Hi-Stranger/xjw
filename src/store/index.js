@@ -11,6 +11,7 @@ const state = {
     wechat: '',
     qrcode: '',
     token: '',
+    scrollwidth: 17,
     load: false,
   },
   userinfo: localStorage.userinfo ? JSON.parse(localStorage.userinfo) : {}

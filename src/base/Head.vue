@@ -22,7 +22,7 @@
           </div>
           <div class="sign-group flex col just-between">
             <p @click="SignIn" class="sign-btn font12 text-center pointer opacity8">登入</p>
-            <p @click="headTip" class="font12 text-center colorWhite pointer hover">忘记密码</p>
+            <p @click="routerYz" class="font12 text-center colorWhite pointer hover">忘记密码</p>
           </div>
           <router-link to="/register" tag="div" class="join-box">
             <img class="pointer opacity8" src="../../static/img/jion_us.png" alt="图片显示错误">
@@ -37,8 +37,8 @@
           </div>
           <div class="flex just-between colorWhite font13">
             <router-link to="/core" tag="p" class="pointer hover">会员中心</router-link>
-            <p @click="headTip" class="relative division pointer hover">游戏记录</p>
-            <p @click="headTip" class="relative division pointer hover">充值记录</p>
+            <p @click="routerYz" class="relative division pointer hover">游戏记录</p>
+            <p @click="routerYz" class="relative division pointer hover">充值记录</p>
             <p @click="SetOut" class="relative division pointer hover">登出</p>
           </div>
         </div>
@@ -49,7 +49,7 @@
         <router-link :class="{'current':$route.name == 'Home' || $route.name == 'Register' || $route.name == 'Core'}"
                      to="/" tag="p">首页
         </router-link>
-        <p @click="headTip">体育投注</p>
+        <p @click="routerYz">体育投注</p>
         <router-link :class="{'current':$route.name == 'Entertainment'}" to="/entertainment" tag="p" class="relative">
           真人娱乐
           <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
@@ -57,11 +57,11 @@
             <img class="margin-auto" src="../../static/img/s_nav1.png" alt="图片显示错误">
           </div>
         </router-link>
-        <p @click="headTip">电子游艺</p>
-        <p @click="headTip">时时彩</p>
-        <p @click="headTip" class="other-color">六合投注</p>
-        <p @click="headTip">彩票游戏</p>
-        <p @click="headTip" class="relative">
+        <p @click="routerYz">电子游艺</p>
+        <p @click="routerYz">时时彩</p>
+        <p @click="routerYz" class="other-color">六合投注</p>
+        <p @click="routerYz">彩票游戏</p>
+        <p @click="routerYz" class="relative">
           棋牌游戏
           <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
         </p>
@@ -149,6 +149,7 @@
         this.$router.push('/');
       },
       headTip(state) {  //暂未开放
+        let time = true;
         let msg = '功能暂未开通，敬请期待！';
         if (state == 1) msg = '请手动添加到首页！';
         if (state == 2) msg = '请手动加入收藏！';
@@ -156,9 +157,11 @@
           title: '重要提醒',
           message: msg,
           lockScroll: false,
+        }).then(() => {
+          time = false;
         });
         setTimeout(() => {
-          this.$dialog.close();
+          if (time) this.$dialog.close();
         }, 2000);
       }
     }

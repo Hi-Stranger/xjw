@@ -6,6 +6,7 @@ import Banner3 from './Banner3.vue';
 import Notice from './Notice.vue';
 import Foot from './Foot.vue';
 import LeftSuspension from './LeftSuspension';
+import RightSuspension from './RightSuspension';
 
 const myComponts = {
   install: function (Vue) {
@@ -17,6 +18,7 @@ const myComponts = {
     Vue.component('Notice', Notice);
     Vue.component('Foot', Foot);
     Vue.component('LeftSuspension', LeftSuspension);
+    Vue.component('RightSuspension', RightSuspension);
   }
 };
 

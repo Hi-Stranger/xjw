@@ -73,6 +73,8 @@
         </div>
       </div>
       <Foot :translate="600"></Foot>
+      <LeftSuspension></LeftSuspension>
+      <RightSuspension></RightSuspension>
     </div>
   </div>
 </template>

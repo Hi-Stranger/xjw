@@ -21,6 +21,9 @@ const mutations = {
   },
   [Types.SETLOAD](state, BOOL) {
     state.config.load = BOOL;
+  },
+  [Types.SCROLLWIDTH](state, num) {
+    state.config.scrollwidth = num;
   }
 };
 export default mutations;

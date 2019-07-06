@@ -13,11 +13,11 @@
                  class="flex col just-between items-center font12 full-height border-box pointer relative">
                 <i class="iconfont font25 text-center colorWhite" style="background-color: #f59a2f;">&#xe641;</i>账户首页
               </p>
-              <p @click="openTip" :class="{'current':current == 1}"
+              <p @click="routerYz" :class="{'current':current == 1}"
                  class="flex col just-between items-center font12 full-height border-box pointer relative">
                 <i class="iconfont font25 text-center colorWhite" style="background-color: #f16346;">&#xe658;</i>游戏记录
               </p>
-              <p @click="openTip" :class="{'current':current == 2}"
+              <p @click="routerYz" :class="{'current':current == 2}"
                  class="flex col just-between items-center font12 full-height border-box pointer relative">
                 <i class="iconfont font25 text-center colorWhite" style="background-color: #2c7fe3;">&#xe61d;</i>充值记录
               </p>
@@ -31,6 +31,8 @@
         </div>
       </div>
       <Foot :translate="600"></Foot>
+      <LeftSuspension></LeftSuspension>
+      <RightSuspension></RightSuspension>
     </div>
   </div>
 </template>
@@ -48,18 +50,7 @@
         current: 0
       }
     },
-    methods: {
-      openTip() {  //暂未开放
-        this.$dialog.alert({
-          title: '重要提醒',
-          message: '功能暂未开通，敬请期待！',
-          lockScroll: false,
-        });
-        setTimeout(() => {
-          this.$dialog.close();
-        }, 2000);
-      }
-    }
+    methods: {}
   }
 </script>
 
