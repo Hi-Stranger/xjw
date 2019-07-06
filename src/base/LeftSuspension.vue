@@ -10,7 +10,7 @@
       </div>
       <p class="font20 colorWhite">手机版下载</p>
       <div class="border-box pad-l10 pad-r10">
-        <img class="border-box full-width backgroundWhite" :src="config.qrcode" alt="图片显示错误">
+        <img class="border-box full-width backgroundWhite" src="../../static/img/ewm.jpg" alt="图片显示错误">
       </div>
       <div class="flex just-center font12 mar-b10">
         <p class="flex col items-center just-center">
