@@ -35,7 +35,11 @@ module.exports = {
 
     cssSourceMap: true
   },
-
+  resolve: {
+    alias: {
+      '@src': path.resolve(__dirname, '../src/assets')
+    }
+  },
   build: {
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),

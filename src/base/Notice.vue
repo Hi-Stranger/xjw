@@ -3,7 +3,7 @@
     <p class="font18">公告：</p>
     <div class="flex1">
       <van-notice-bar
-        :text="config.msg"
+        :text="config.notice"
       />
     </div>
   </div>

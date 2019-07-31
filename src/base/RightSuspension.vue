@@ -6,7 +6,7 @@
       <p class="colorWhite font14">ONLINE SERVICER</p>
       <p class="font24 colorWhite">
         <span>客服热线</span>
-        <span class="font16">{{config.phone}}</span>
+        <span v-for="l in config.phone" class="font16 mar-t10">{{l}}</span>
       </p>
       <div class="border-box pad-l10 pad-r10">
         <img class="border-box full-width backgroundWhite" :src="config.qrcode" alt="图片显示错误">
@@ -50,9 +50,10 @@
 
     > div {
       top: 140px;
-      bottom: 0;
+      bottom: -30px;
       left: 0;
       line-height: 1;
+      background-color: #1f326f;
 
       > p:first-child {
         font-size: 26px;
@@ -71,10 +72,6 @@
         span {
           display: block;
           line-height: 1;
-
-          &:first-child {
-            margin-bottom: 13px;
-          }
         }
       }
 

@@ -15,6 +15,7 @@
     </div>
     <LeftSuspension></LeftSuspension>
     <RightSuspension></RightSuspension>
+    <img src="../assets/logo.png" alt="">
   </div>
 </template>
 
@@ -54,7 +55,7 @@
       scrollWidth() {  //计算滚动条宽度
         let a = window.innerWidth;
         let b = this.$refs.scrollBox.clientWidth;
-        this.$store.commit(Types.SCROLLWIDTH, a -b);
+        this.$store.commit(Types.SCROLLWIDTH, a - b);
       }
     }
   }

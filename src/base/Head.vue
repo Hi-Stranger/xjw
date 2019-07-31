@@ -49,28 +49,34 @@
         <router-link :class="{'current':$route.name == 'Home' || $route.name == 'Register' || $route.name == 'Core'}"
                      to="/" tag="p">首页
         </router-link>
-        <p @click="routerYz">体育投注</p>
         <router-link :class="{'current':$route.name == 'Entertainment'}" to="/entertainment" tag="p" class="relative">
           真人娱乐
-          <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
+          <transition name="flash-enter-active">
+            <img v-show="animate" class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
+          </transition>
           <div class="navlogo absolute full-width">
-            <img class="margin-auto" src="../../static/img/s_nav1.png" alt="图片显示错误">
+            <img v-show="animate" class="margin-auto" src="../../static/img/s_nav1.png" alt="图片显示错误">
           </div>
         </router-link>
+        <p @click="routerYz">体育投注</p>
         <p @click="routerYz">电子游艺</p>
         <p @click="routerYz">时时彩</p>
         <p @click="routerYz" class="other-color">六合投注</p>
         <p @click="routerYz">彩票游戏</p>
         <p @click="routerYz" class="relative">
           棋牌游戏
-          <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
+          <transition name="fade">
+            <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
+          </transition>
         </p>
         <router-link :class="{'current':$route.name == 'Preferential'}" to="/preferential" tag="p"
                      class="relative other-color">
           优惠活动
-          <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
+          <transition name="fade" mode="out-in">
+            <img v-show="animate" class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
+          </transition>
         </router-link>
-        <p>在线客服</p>
+        <!--        <p>在线客服</p>-->
       </div>
     </div>
   </div>
@@ -87,6 +93,7 @@
       return {
         account: '',
         password: '',
+        animate: true
       }
     },
     computed: {
@@ -325,5 +332,29 @@
         color: #314787;
       }
     }
+
+    /*.flash-enter-active {*/
+    /*  animation: bounce-in 5s reverse;*/
+    /*}*/
+
+    /*.fade-enter-active, .fade-leave-active {*/
+    /*  transition: bounce-in 5s;*/
+    /*}*/
+
+    /*.fade-enter { // 类名:初始化状态*/
+    /*  opacity: 0;*/
+    /*}*/
+
+    /*@keyframes bounce-in {*/
+    /*  0% {*/
+    /*    opacity: 0;*/
+    /*  }*/
+    /*  50% {*/
+    /*    opacity: .5;*/
+    /*  }*/
+    /*  100% {*/
+    /*    opacity: 1;*/
+    /*  }*/
+    /*}*/
   }
 </style>

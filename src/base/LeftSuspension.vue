@@ -4,7 +4,7 @@
     <div class="absolute full-width text-center">
       <p><b>欢迎光临</b></p>
       <p class="colorWhite font14">WELCOME</p>
-      <p class="font24 colorWhite">加入收藏</p>
+      <p class="font24 colorWhite" style="display: none;">加入收藏</p>
       <div class="border-box mar-b10">
         <a @click="routerYz" href="javascript:;" class="font17 hover">苹果下载帮助</a>
       </div>
@@ -22,7 +22,15 @@
           Android
         </p>
       </div>
-      <p @click="showLeft = false" class="colorWhite font14 pointer hover">关闭</p>
+      <div>
+        <a class="colorWhite" :href="config.qq ? 'tencent://message/?uin='+config.qq+'&Site=&Menu=yes' :
+        'javascript:;'" target="_blank">
+          <!--          href="tencent://message/?Site=baidu.com&uin=1360316956&Menu=yes"-->
+          <i class="iconfont icon-qq"></i>
+          在线客服
+        </a>
+      </div>
+      <p @click="showLeft = false" class="colorWhite font14 pointer hover mar-t10">关闭</p>
     </div>
   </div>
 </template>
@@ -106,6 +114,26 @@
           &:first-child {
             margin-right: 17px;
           }
+        }
+      }
+
+      > div:nth-child(8) {
+        height: 33px;
+        padding: 0 10px;
+        font-size: 17px;
+
+        a {
+          i {
+            font-size: 26px;
+          }
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          background-color: #5e6dff;
+          border-radius: 17px;
         }
       }
 
