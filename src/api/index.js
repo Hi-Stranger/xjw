@@ -1,7 +1,7 @@
 import axios from "axios";
 import Vue from "vue";
 //增加默认请求路径
-axios.defaults.baseURL = "http://hl66899.com";
+axios.defaults.baseURL = "http://hl66899.com";  //这里要做更换
 axios.interceptors.response.use((res) => {
   if (res.data) return res.data;
   return res; //在这里统一拦截结果

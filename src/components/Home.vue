@@ -44,7 +44,7 @@
         // localStorage.agent = 'ds22229.com';
         let query = this.$route.query.agent || localStorage.agent;
         this.$store.commit('SETLOAD', true);
-        this.scrollWidth();
+        if (localStorage.userinfo) this.$store.commit(Types.SETINFO, JSON.parse(localStorage.userinfo));
         getconfigure(query).then((resp) => {
           this.$store.commit('SETLOAD', false);
           this.$store.commit(Types.NOTICE, resp.data);

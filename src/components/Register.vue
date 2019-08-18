@@ -1,7 +1,7 @@
 <template>
   <div class="xjw-register main-box">
     <div ref="scrollTo" class="full-height full-width overflowY">
-      <Head></Head>
+      <Head ref="headId"></Head>
       <Banner1></Banner1>
       <div class="content relative min-1000 max-1000 margin-auto">
         <Notice></Notice>
@@ -134,13 +134,18 @@
               lockScroll: false,
             });
             return;
-          } else {
+          } else {  //注册成功直接跳转首页并登录
             let _this = this;
             this.$toast.success({
               message: resp.data.msg,
               duration: 2000,
               onClose() {
-                _this.checked = false;
+                if (resp.data.res === 1) {
+                  let dom = _this.$refs.headId;
+                  dom._data.account = _this.InAccount;
+                  dom._data.password = _this.InPassword;
+                  dom.SignIn();
+                }
               }
             });
           }

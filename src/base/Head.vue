@@ -17,8 +17,8 @@
         </div>
         <div v-if="!userinfo.username" class="sign-in flex just-between">
           <div class="flex col just-between full-height">
-            <input v-model="account" class="font12" type="text" placeholder="请输入账号">
-            <input v-model="password" class="font12" type="password" placeholder="请输入密码">
+            <input v-model="account" @keydown.enter="SignIn" class="font12" type="text" placeholder="请输入账号">
+            <input v-model="password" @keydown.enter="SignIn" class="font12" type="password" placeholder="请输入密码">
           </div>
           <div class="sign-group flex col just-between">
             <p @click="SignIn" class="sign-btn font12 text-center pointer opacity8">登入</p>
@@ -54,7 +54,7 @@
           <transition name="flash-enter-active">
             <img v-show="animate" class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
           </transition>
-          <div class="navlogo absolute full-width">
+          <div @click="goGame" class="navlogo absolute full-width">
             <img v-show="animate" class="margin-auto" src="../../static/img/s_nav1.png" alt="图片显示错误">
           </div>
         </router-link>
@@ -104,6 +104,18 @@
       //   console.log(this.$route);
       // });
     },
+    watch: {
+      $route: {
+        handler(x, o) {
+          // if (o.name === 'Register' && sessionStorage.load) {  //从注册页面来
+          //   let load = JSON.parse(sessionStorage.load);
+          //   this.account = load.name;
+          //   this.password = load.pass;
+          //   this.SignIn();
+          // }
+        }
+      }
+    },
     methods: {
       SignIn() { //登陆
         if (!this.account || !this.password || this.account.length < 6 || this.account.length > 12 || this.password < 6 || this.password.length > 12) {
@@ -120,6 +132,7 @@
           password: this.password,
           domain: localStorage.agent,
         }).then((resp) => {
+          sessionStorage.removeItem('load');
           this.$store.commit('SETLOAD', false);
           if (resp.code && resp.code != 0) {
             this.$dialog.alert({
@@ -142,6 +155,7 @@
                 resp.data.para = 'http://ds66668.com?para=' + encryptAfter;
                 resp.data.a = _this.account;
                 resp.data.b = _this.password;
+                resp.data.time = new Date().getTime();
                 _this.$store.commit(Types.SETINFO, resp.data);
                 _this.$router.push('/');
               }
@@ -170,6 +184,23 @@
         setTimeout(() => {
           if (time) this.$dialog.close();
         }, 2000);
+      },
+      goGame() {
+        if (!this.userinfo.para) {
+          let time = true;
+          this.$dialog.alert({
+            title: '重要提醒',
+            message: '请先登陆',
+            lockScroll: false,
+          }).then(() => {
+            time = false;
+          });
+          setTimeout(() => {
+            if (time) this.$dialog.close();
+          }, 2000);
+          return;
+        }
+        window.open(this.userinfo.para);
       }
     }
   }

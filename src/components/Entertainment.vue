@@ -50,13 +50,16 @@
     methods: {
       goGame() {
         if (!this.userinfo.para) {
+          let time = true;
           this.$dialog.alert({
             title: '重要提醒',
             message: '请先登陆',
             lockScroll: false,
+          }).then(() => {
+            time = false;
           });
           setTimeout(() => {
-            this.$dialog.close();
+            if (time) this.$dialog.close();
           }, 2000);
           return;
         }
