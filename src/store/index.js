@@ -14,6 +14,7 @@ const state = {
     qq: '',
     scrollwidth: 17,
     load: false,
+    gameurl: "",
   },
   userinfo: localStorage.userinfo ? JSON.parse(localStorage.userinfo) : {}
 };

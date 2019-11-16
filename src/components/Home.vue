@@ -40,14 +40,18 @@
       this.$nextTick(() => {
         this.scrollWidth();
         let _url = (window.location.host).split(".");
-        localStorage.agent = (_url[0]).toLocaleLowerCase() == 'www' ? _url[1] + ".com" : _url[0] + ".com";
-        // localStorage.agent = 'ds22229.com';
+        // localStorage.agent = (_url[0]).toLocaleLowerCase() == 'www' ? _url[1] + ".com" : _url[0] + ".com";
+        localStorage.agent = 'ds0118.com';
         let query = this.$route.query.agent || localStorage.agent;
         this.$store.commit('SETLOAD', true);
         if (localStorage.userinfo) this.$store.commit(Types.SETINFO, JSON.parse(localStorage.userinfo));
         getconfigure(query).then((resp) => {
           this.$store.commit('SETLOAD', false);
           this.$store.commit(Types.NOTICE, resp.data);
+          let _53code = document.createElement("script");
+          _53code.src = resp.data.online_service_url;
+          let s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(_53code, s);
         });
       });
     },

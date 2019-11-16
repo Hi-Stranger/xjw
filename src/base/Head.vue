@@ -69,13 +69,13 @@
             <img class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
           </transition>
         </p>
-        <router-link :class="{'current':$route.name == 'Preferential'}" to="/preferential" tag="p"
-                     class="relative other-color">
-          优惠活动
-          <transition name="fade" mode="out-in">
-            <img v-show="animate" class="absolute" src="../../static/img/hot.png" alt="图片显示错误">
-          </transition>
-        </router-link>
+        <!--        <router-link :class="{'current':$route.name == 'Preferential'}" to="/preferential" tag="p"-->
+        <!--                     class="relative other-color">-->
+        <!--          优惠活动-->
+        <!--          <transition name="fade" mode="out-in">-->
+        <!--            <img v-show="animate" class="absolute" src="../../static/img/hot.png" alt="图片显示错误">-->
+        <!--          </transition>-->
+        <!--        </router-link>-->
         <!--        <p>在线客服</p>-->
       </div>
     </div>
@@ -97,7 +97,7 @@
       }
     },
     computed: {
-      ...mapState(['userinfo'])
+      ...mapState(["userinfo", "config"])
     },
     created() {
       // this.$nextTick(() => {
@@ -152,7 +152,7 @@
                 encrypt.password = _this.password;
                 let userInfo = JSON.stringify(encrypt);
                 let encryptAfter = encryptAES(userInfo);
-                resp.data.para = 'http://ds66668.com?para=' + encryptAfter;
+                resp.data.para = _this.config.gameurl + '/?para=' + encryptAfter;
                 resp.data.a = _this.account;
                 resp.data.b = _this.password;
                 resp.data.time = new Date().getTime();

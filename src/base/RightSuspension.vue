@@ -16,7 +16,8 @@
         <router-link to="/register" tag="a" href="javascript:;" class="font17 hover">立即开户</router-link>
       </div>
       <div class="border-box mar-b10">
-        <a href="http://ds6099.com/?para=3ca31fb7d8e1a1e6b352e33af63e583a" target="_blank" class="font17 hover">免费试玩</a>
+        <a :href="config.gameurl+'/?para=3ca31fb7d8e1a1e6b352e33af63e583a'" target="_blank"
+           class="font17 hover">免费试玩</a>
       </div>
       <p @click="showRight = false" class="colorWhite font14 pointer hover">关闭</p>
     </div>
