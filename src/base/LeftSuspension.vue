@@ -22,15 +22,15 @@
           Android
         </p>
       </div>
-      <div>
-        <a class="colorWhite" :href="config.qq ? 'tencent://message/?uin='+config.qq+'&Site=&Menu=yes' :
+      <div v-for="(item,index) in config.qq" :key="index" class="onlion-ask">
+        <a class="colorWhite" :href="item ? 'tencent://message/?uin='+item+'&Site=&Menu=yes' :
         'javascript:;'" target="_blank">
           <!--          href="tencent://message/?Site=baidu.com&uin=1360316956&Menu=yes"-->
           <i class="iconfont icon-qq"></i>
           在线客服
         </a>
       </div>
-      <p @click="showLeft = false" class="colorWhite font14 pointer hover mar-t10">关闭</p>
+      <p @click="showLeft = false" class="colorWhite font14 pointer hover">关闭</p>
     </div>
   </div>
 </template>
@@ -117,10 +117,12 @@
         }
       }
 
-      > div:nth-child(8) {
+      > div.onlion-ask {
         height: 33px;
-        padding: 0 10px;
+        padding: 0 10px 10px 10px;
         font-size: 17px;
+        background-color: #1f326f;
+        box-sizing: content-box;
 
         a {
           i {

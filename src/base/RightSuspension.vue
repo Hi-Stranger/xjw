@@ -12,10 +12,10 @@
         <img class="border-box full-width backgroundWhite" :src="config.qrcode" alt="图片显示错误">
       </div>
       <p class="font14">微信号{{config.wechat}}</p>
-      <div class="border-box mar-b10">
+      <div class="border-box">
         <router-link to="/register" tag="a" href="javascript:;" class="font17 hover">立即开户</router-link>
       </div>
-      <div class="border-box mar-b10">
+      <div class="border-box">
         <a :href="config.gameurl+'/?para=3ca31fb7d8e1a1e6b352e33af63e583a'" target="_blank"
            class="font17 hover">免费试玩</a>
       </div>
@@ -93,8 +93,8 @@
       }
 
       > div:nth-child(6), > div:nth-child(7) {
-        padding: 0 10px;
-        background: url("../../static/img/guang.png") no-repeat top center;
+        padding: 0 10px 10px 10px;
+        background: #1f326f url("../../static/img/guang.png") no-repeat top center;
 
         a {
           display: block;
