@@ -15,6 +15,7 @@ const state = {
     scrollwidth: 17,
     load: false,
     gameurl: "",
+    useMobileCode: "",  //是否使用短信验证码判断 0使用/register（非） 1使用/registerSms
   },
   userinfo: localStorage.userinfo ? JSON.parse(localStorage.userinfo) : {}
 };

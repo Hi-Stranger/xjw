@@ -20,6 +20,14 @@ const myMixin = {
         if (time) this.$dialog.close();
       }, 2000);
     },
+    tipOutCancel(str) {
+      this.$dialog.confirm({
+        title: '重要提醒',
+        message: str,
+        lockScroll: false,
+        showCancelButton: false,
+      });
+    },
     Signout() { //退出
       let _this = this;
       this.$toast.success({
