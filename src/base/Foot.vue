@@ -2,10 +2,10 @@
   <div class="footer min-1000" :style="{'transform':'translate(0, -'+translate+'px)'} ">
     <div class="absolute full-width">
       <div class="max-1000 min-1000 margin-auto">
-        <img class="full-width" src="../../static/img/ft_comper.png" alt="图片显示错误">
+        <img class="full-width" src="../../static/img/ft_comper.jpg" alt="图片显示错误">
       </div>
       <div class="max-1000 min-1000 margin-auto absolute">
-        <img src="../../static/img/footer_img.png" alt="图片显示错误">
+<!--        <img src="../../static/img/footer_img.png" alt="图片显示错误">-->
         <div class="flex col font12">
           <div class="flex just-center mar-b15">
             <p class="pointer hover">关于我们</p>
